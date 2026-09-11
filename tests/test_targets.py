@@ -113,3 +113,35 @@ def test_env_group_exists() -> None:
 
     assert env_group.expected_root == Path.home()
     assert ".env" in env_group.files
+
+
+def test_terraform_group_exists() -> None:
+    targets = default_targets()
+    tf_group = next(t for t in targets if t.name == "terraform")
+
+    assert tf_group.expected_root == Path.home() / ".terraform.d"
+    assert "credentials.tfrc.json" in tf_group.files
+
+
+def test_terraformrc_group_exists() -> None:
+    targets = default_targets()
+    tfrc_group = next(t for t in targets if t.name == "terraformrc")
+
+    assert tfrc_group.expected_root == Path.home()
+    assert ".terraformrc" in tfrc_group.files
+
+
+def test_rclone_group_exists() -> None:
+    targets = default_targets()
+    rclone_group = next(t for t in targets if t.name == "rclone")
+
+    assert rclone_group.expected_root == Path.home() / ".config" / "rclone"
+    assert "rclone.conf" in rclone_group.files
+
+
+def test_heroku_group_exists() -> None:
+    targets = default_targets()
+    heroku_group = next(t for t in targets if t.name == "heroku")
+
+    assert heroku_group.expected_root == Path.home() / ".config" / "heroku"
+    assert "config.json" in heroku_group.files
