@@ -105,3 +105,11 @@ def test_vault_group_exists() -> None:
 
     assert vault_group.expected_root == Path.home()
     assert ".vault-token" in vault_group.files
+
+
+def test_env_group_exists() -> None:
+    targets = default_targets()
+    env_group = next(t for t in targets if t.name == "env")
+
+    assert env_group.expected_root == Path.home()
+    assert ".env" in env_group.files

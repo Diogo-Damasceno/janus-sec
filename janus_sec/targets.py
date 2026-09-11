@@ -93,4 +93,9 @@ def default_targets() -> list[TargetGroup]:
             expected_root=home,
             files=(".vault-token",),
         ),
+        TargetGroup(
+            name="env",
+            expected_root=home,
+            files=(".env",),
+        ),
     ]
