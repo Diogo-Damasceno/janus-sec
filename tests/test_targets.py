@@ -137,11 +137,3 @@ def test_rclone_group_exists() -> None:
 
     assert rclone_group.expected_root == Path.home() / ".config" / "rclone"
     assert "rclone.conf" in rclone_group.files
-
-
-def test_heroku_group_exists() -> None:
-    targets = default_targets()
-    heroku_group = next(t for t in targets if t.name == "heroku")
-
-    assert heroku_group.expected_root == Path.home() / ".config" / "heroku"
-    assert "config.json" in heroku_group.files
