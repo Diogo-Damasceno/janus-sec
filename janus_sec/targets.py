@@ -113,9 +113,4 @@ def default_targets() -> list[TargetGroup]:
             expected_root=home / ".config" / "rclone",
             files=("rclone.conf",),
         ),
-        TargetGroup(
-            name="heroku",
-            expected_root=home / ".config" / "heroku",
-            files=("config.json",),
-        ),
     ]
