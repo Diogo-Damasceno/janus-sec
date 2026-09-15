@@ -113,4 +113,9 @@ def default_targets() -> list[TargetGroup]:
             expected_root=home / ".config" / "rclone",
             files=("rclone.conf",),
         ),
+        TargetGroup(
+            name="rclone-legacy",
+            expected_root=home,
+            files=(".rclone.conf",),
+        ),
     ]

@@ -137,3 +137,14 @@ def test_rclone_group_exists() -> None:
 
     assert rclone_group.expected_root == Path.home() / ".config" / "rclone"
     assert "rclone.conf" in rclone_group.files
+
+
+def test_rclone_legacy_group_exists() -> None:
+    # rclone falls back to ~/.rclone.conf when the XDG config dir isn't
+    # available (older installs, or when the .config dir can't be
+    # created) - see rclone's own config-file lookup order in its docs.
+    targets = default_targets()
+    rclone_legacy_group = next(t for t in targets if t.name == "rclone-legacy")
+
+    assert rclone_legacy_group.expected_root == Path.home()
+    assert ".rclone.conf" in rclone_legacy_group.files
